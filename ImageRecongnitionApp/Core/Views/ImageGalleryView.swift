@@ -19,7 +19,7 @@ struct ImageGalleryView: View {
                 GridRow {
                     ForEach(resourceRow, id: \.self) { resource in
                         NavigationLink {
-                            TranslationView()
+                            TextRecognitionView(imageResource: resource)
                         } label: {
                             Image(resource)
                                 .resizable()
@@ -32,6 +32,7 @@ struct ImageGalleryView: View {
                 }
             }
         }
+        .trailTheme()
     }
 }
 
