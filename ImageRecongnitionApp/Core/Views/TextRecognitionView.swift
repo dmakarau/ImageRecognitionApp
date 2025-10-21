@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TextRecognitionView: View {
+    @State private var textRecognizer: TextRecognizer?
+    
     let imageResource: ImageResource
     var body: some View {
         VStack {
@@ -15,13 +17,22 @@ struct TextRecognitionView: View {
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .task {
+                    textRecognizer = await TextRecognizer(imageResource: imageResource)
+                }
             Spacer()
             
-            TranslationView(text: "", isProcessing: false)
+            TranslationView(text: textRecognizer?.recognizedText ?? "", isProcessing: isProcessing)
         }
         .padding()
         .navigationTitle("Image Info")
         .trailTheme()
+    }
+}
+
+private extension TextRecognitionView {
+    var isProcessing: Bool {
+        textRecognizer == nil
     }
 }
 
