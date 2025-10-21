@@ -14,6 +14,7 @@ A modern iOS application built with SwiftUI that combines optical character reco
 ## ✨ Features
 
 - **Image Gallery**: Browse through a collection of sample images with text
+- **Photo Picker**: Select custom images from your photo library for analysis
 - **Text Recognition**: Extract text from images using Apple's advanced Vision framework
 - **Real-time Translation**: Translate recognized text into multiple languages
 - **Modern UI**: Clean, intuitive interface built with SwiftUI
@@ -23,6 +24,7 @@ A modern iOS application built with SwiftUI that combines optical character reco
 ## 🛠 Technology Stack
 
 - **SwiftUI**: Modern declarative UI framework
+- **PhotosUI**: Native photo picker for custom image selection
 - **Vision Framework**: Apple's machine learning framework for text recognition
 - **Translation API**: Built-in iOS translation capabilities
 - **Swift**: Native iOS development language
@@ -80,7 +82,9 @@ open ImageRecongnitionApp.xcodeproj
 ## 🎯 Usage
 
 1. **Launch the App**: Open the app to see the main gallery view
-2. **Select an Image**: Tap on any image from the 3x3 grid to analyze it
+2. **Choose an Image**: 
+   - **Predefined Images**: Tap on any sample image from the 3x3 grid to analyze it
+   - **Custom Images**: Tap the "Select Custom Image" button to choose a photo from your library
 3. **View Results**: The app will automatically extract text from the selected image
 4. **Translate**: Tap the "Translate" button to open the translation interface
 5. **Choose Language**: Select your target language and view the translation
@@ -89,15 +93,17 @@ open ImageRecongnitionApp.xcodeproj
 
 ### TextRecognizer
 The heart of the OCR functionality, using Apple's Vision framework:
+- Supports both `ImageResource` (bundled images) and `UIImage` (custom photos)
 - Processes images with high accuracy recognition level
 - Extracts text observations and candidates
 - Returns recognized text as a concatenated string
 
 ### ImageGalleryView
-A responsive grid layout displaying sample images:
-- 3x3 grid of navigation-enabled image thumbnails
-- Rounded corners and padding for visual appeal
-- Navigation links to detailed text recognition views
+A responsive layout with both predefined and custom image options:
+- 3x3 grid of navigation-enabled sample image thumbnails
+- PhotosPicker integration for selecting custom images from photo library
+- Seamless navigation to text recognition views
+- Rounded corners and visual styling for enhanced UX
 
 ### TranslationView
 Handles the translation workflow:
@@ -122,11 +128,6 @@ Handles the translation workflow:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
-
-**Denis Makarau**
-- GitHub: [@dmakarau](https://github.com/dmakarau)
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -142,10 +143,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - [ ] Camera integration for live photo capture
 - [ ] Support for multiple image formats
 - [ ] Text editing capabilities before translation
-- [ ] History of recognized texts
+- [ ] History of recognized texts and custom images
 - [ ] Batch processing of multiple images
 - [ ] Export functionality for recognized text
-- [ ] Custom image import from photo library
+- [ ] Save custom images to app's local storage
+- [ ] Enhanced photo picker with cropping capabilities
 
 ## 📝 Notes
 

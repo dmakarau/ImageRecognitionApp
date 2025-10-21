@@ -14,9 +14,17 @@ struct TextRecognizer {
     var observations: [RecognizedTextObservation] = []
     
     init(imageResource: ImageResource) async {
+        let image = UIImage(resource: imageResource)
+        await performRecognition(on: image)
+    }
+    
+    init(uiImage: UIImage) async {
+        await performRecognition(on: uiImage)
+    }
+    
+    private mutating func performRecognition(on image: UIImage) async {
         var request = RecognizeTextRequest()
         request.recognitionLevel = .accurate
-        let image = UIImage(resource: imageResource)
         
         if let imageData = image.pngData(),
            let results = try? await request.perform(on: imageData) {
